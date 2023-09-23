@@ -24,8 +24,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(406).json(error);
-      return;
+
+      return response.status(406).json(error);
     }
 
     // Validate email
@@ -37,8 +37,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(400).json(error);
-      return;
+
+      return response.status(400).json(error);
     }
     // Validate password
     if (!password) {
@@ -49,8 +49,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(406).json(error);
-      return;
+
+      return response.status(406).json(error);
     }
 
     //Validate password by including special
@@ -68,8 +68,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(400).json(error);
-      return;
+
+      return response.status(400).json(error);
     }
     // Get user data by Email
     const user = await getUserByEmail(email, response);
@@ -89,8 +89,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(400).json(error);
-      return;
+
+      return response.status(400).json(error);
     } else if (user.status == "pending") {
       const error = {
         error: true,
@@ -99,8 +99,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(401).json(error);
-      return;
+
+      return response.status(401).json(error);
     } else if (user.status == "blocked") {
       const error = {
         error: true,
@@ -109,8 +109,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(401).json(error);
-      return;
+
+      return response.status(401).json(error);
     } else if (!isValidPassword) {
       const error = {
         error: true,
@@ -119,8 +119,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(401).json(error);
-      return;
+
+      return response.status(401).json(error);
     } else if (logHistory && logHistory.auth_attempt >= 3) {
       const error = {
         error: true,
@@ -129,8 +129,8 @@ route.post("/v1/login", async (request, response) => {
         data: [],
       };
       console.log(error);
-      response.status(401).json(error);
-      return;
+
+      return response.status(401).json(error);
     } else {
       // Generate a new token for the user
       const newToken = await generateToken();
@@ -147,7 +147,6 @@ route.post("/v1/login", async (request, response) => {
       delete user.id;
       delete user.password;
 
-      console.log("User signed successfully");
       const success = {
         error: false,
         status: 200,
@@ -155,8 +154,8 @@ route.post("/v1/login", async (request, response) => {
         data: userData,
       };
       console.log(success);
-      response.status(200).json(success);
-      return;
+
+      return response.status(200).json(success);
     }
   } catch (err) {
     console.error("Error inserting user data:", err);
@@ -168,8 +167,8 @@ route.post("/v1/login", async (request, response) => {
       data: [],
     };
     console.log(error);
-    response.status(500).json(error);
-    return;
+
+    return response.status(500).json(error);
   }
 });
 
