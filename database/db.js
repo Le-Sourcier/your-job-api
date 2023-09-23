@@ -27,7 +27,7 @@ class DB {
         process.exit(1);
       }
 
-      //console.log("Connected to MySQL server");
+      console.log("Connected to MySQL server");
 
       // Create the database if it does not exist
       // this.createDatabaseIfNotExists(conn);
