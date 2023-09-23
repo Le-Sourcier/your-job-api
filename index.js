@@ -1,4 +1,4 @@
-const { app, server, express, PORT, path } = require("../.env/server");
+const { app, server, express, PORT, path } = require("./.env/server");
 
 app.use(express.static(path.join(__dirname, "..", "view")));
 

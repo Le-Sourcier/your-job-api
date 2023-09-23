@@ -2,7 +2,7 @@
   "name": "your_job",
   "version": "1.0.0",
   "description": "An API endpoint for a job search application. This means it's a specific connection point that allows a job search application to send and receive data to and from other systems or services",
-  "main": "./public/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "run node"
   },
