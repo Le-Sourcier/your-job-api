@@ -2,10 +2,15 @@ const mysql = require("mysql");
 
 class DB {
   constructor() {
-    this.host = "localhost";
-    this.user = "root";
-    this.pass = "";
-    this.dbname = "your_job";
+    // this.host = "localhost";
+    // this.user = "root";
+    // this.pass = "";
+    // this.dbname = "your_job";
+    // this.tablesCreated = false; // Flag to track if tables were created
+    this.host = "mysql-your-job.alwaysdata.net";
+    this.user = "your-job";
+    this.pass = "Lesourcier@91680967";
+    this.dbname = "your-job_0";
     this.tablesCreated = false; // Flag to track if tables were created
   }
 
@@ -25,7 +30,7 @@ class DB {
       //console.log("Connected to MySQL server");
 
       // Create the database if it does not exist
-      this.createDatabaseIfNotExists(conn);
+      // this.createDatabaseIfNotExists(conn);
 
       // Switch to the database
       conn.changeUser({ database: this.dbname }, (err) => {
