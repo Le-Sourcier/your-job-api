@@ -13,6 +13,7 @@ const route = express.Router();
 
 route.post("/v1/login", async (request, response) => {
   const { email, password } = request.body;
+  console.log("/v1/login");
   try {
     // Validate email if not empty
     if (!email) {
